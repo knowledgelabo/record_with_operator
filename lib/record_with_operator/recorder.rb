@@ -11,7 +11,7 @@ module RecordWithOperator
     end
 
     def set_updater
-      return unless changed? # no use setting updating_by when it's not changed
+      return unless saved_changes? # no use setting updating_by when it's not changed
       return unless operator # avoid changing value to be nil
       send("#{RecordWithOperator.updater_column}=", operator.id)
     end
